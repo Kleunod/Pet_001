@@ -1,0 +1,3 @@
+{
+  "tests/api/test_github_api.py::test_emojis_total_count": true
+}
