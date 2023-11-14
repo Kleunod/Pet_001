@@ -19,5 +19,6 @@
   "tests/database/test_database.py::test_detailed_orders",
   "tests/database/test_database.py::test_product_delete",
   "tests/database/test_database.py::test_product_insert",
-  "tests/database/test_database.py::test_product_qnt_update"
+  "tests/database/test_database.py::test_product_qnt_update",
+  "tests/ui/test_ui.py::test_check_incorrect_username"
 ]

@@ -1,3 +1,4 @@
 {
-  "tests/api/test_github_api.py::test_emojis_total_count": true
+  "tests/api/test_github_api.py::test_emojis_total_count": true,
+  "tests/ui/test_ui.py::test_check_incorrect_username": true
 }
