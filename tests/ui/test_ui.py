@@ -1,39 +1,41 @@
 import pytest
 
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
+
 
 @pytest.mark.ui
 def test_check_incorrect_username():
-    #Створення об'єкту для керування браузером
+    #Creating an object to control the browser
     driver = webdriver.Chrome(
-        service=Service(f'c:/Users/Alex/QAcourse/' + 'chromedriver.exe')
-        )
+        service=Service(ChromeDriverManager().install()))
 
-    #відкриваємо сторінку https://github.com/login
+    #open the page https://github.com/login
     driver.get ("https://github.com/login")
 
-    #Знаходимо поле, в яке будемо вводити неправильне ім'я користувача або поштову адресу
-    login_element = driver.find_element(By.ID, "login_field")
+    #We find the field in which we will enter the wrong user name
+    login_elem = driver.find_element(By.ID, "login_field")
 
-    #Вводимо неправильне ім'я користувача або поштову адресу
-    login_element.send_keys("kleunodlav@mistakeinemail.com")
-    
-    # Знаходимо поле, в яке будемо вводити неправильний пароль
+    #Enter an incorrect username or email address
+    login_elem.send_keys("kleunodlav@mistakeinemail.com")
+
+    #We find the field in which we will enter the wrong password
     pass_elem = driver.find_element(By.ID, "password")
 
-    # Вводимо неправильний пароль
+    #Enter the wrong password
     pass_elem.send_keys("wrong password")
 
-    # Знаходимо кнопку sign in
+    #We find the sign in button
     btn_elem = driver.find_element(By.NAME, "commit")
 
-    # Емулюємо клік лівою кнопкою мишки
+    #Emulate a click with the left mouse button
     btn_elem.click()
 
-    # Перевіряємо, що назва сторінки така, яку ми очікуємо
+    #We check that the name of the page is what we expect
     assert driver.title == "Sign in to GitHub · GitHub"
 
-    # Закриваємо браузер
+    #Close the browser
     driver.close()
